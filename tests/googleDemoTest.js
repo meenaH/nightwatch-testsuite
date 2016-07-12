@@ -1,16 +1,18 @@
 module.exports = {
-  'Demo test Google' : function (client) {
+  'Zuora Login Test' : function (client) {
     client
-      .url('http://www.google.com')
-      .waitForElementVisible('body', 1000)
-      .assert.title('Google')
-      .assert.visible('input[type=text]')
-      .setValue('input[type=text]', 'rembrandt van rijn')
-      .waitForElementVisible('button[name=btnG]', 1000)
-      .click('button[name=btnG]')
-      //.pause(1000)
-      //.assert.containsText('ol#rso li:first-child',
-      //'Rembrandt - Wikipedia')
-      .end();
+      .url('https://apisandbox.zuora.com/apps/newlogin.do')
+      .waitForElementVisible('body', 'loginPage')
+      .assert.title('Zuora,Inc.')//Google
+      .assert.visible('input[type=text]') //input[type=text]
+      .setValue('input[type=text]', 'meena.haque@tesglobal.com_newsandbox')
+      .setValue('input[type=password]', 'Eatcakes123!')
+      // .pause(2000)
+      .click('.btn-login')
+      .pause(2000)
+      //.waitForElementVisible('body', 5000)
+      .assert.title('Z-Billing','homePage')
+      //.end();
   }
 };
+
